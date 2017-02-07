@@ -1,0 +1,58 @@
+<div class="productos">
+  <div class="card">
+    <div class="header">
+      <h4 class="title">LISTA DE PRODUCTOS</h4>
+    </div><br />
+    <p style="padding-left:10px;" class="text-left">
+      <button class="btn btn-success" ui-sref="main.home.productoNuevo">Nuevo</button>
+    </p>
+    <div class="content table-responsive table-full-width">
+      <form class="form-inline">
+        <div class="form-group" style="padding-left:10px;">
+          <label>Busqueda</label>
+          <input type="text" ng-model="$ctrl.search" class="form-control" placeholder="Search">
+        </div>
+      </form>
+      <table class="table table-striped" id="example">
+        <thead>
+          <th ng-click="$ctrl.sort('upc')">UPC
+            <span class="glyphicon sort-icon" ng-show="$ctrl.sortKey=='upc'" ng-class="{'glyphicon-chevron-up':$ctrl.reverse,'glyphicon-chevron-down':!$ctrl.reverse}"></span>
+          </th>
+          <th ng-click="$ctrl.sort('proveedor.nombre')">Proveedor
+            <span class="glyphicon sort-icon" ng-show="$ctrl.sortKey=='proveedor.nombre'" ng-class="{'glyphicon-chevron-up':$ctrl.reverse,'glyphicon-chevron-down':!$ctrl.reverse}"></span>
+          </th>
+          <th ng-click="$ctrl.sort('nombre')">Nombre
+            <span class="glyphicon sort-icon" ng-show="$ctrl.sortKey=='nombre'" ng-class="{'glyphicon-chevron-up':$ctrl.reverse,'glyphicon-chevron-down':!$ctrl.reverse}"></span>
+          </th>
+          <th ng-click="$ctrl.sort('unidad')">Unidad
+            <span class="glyphicon sort-icon" ng-show="$ctrl.sortKey=='unidad'" ng-class="{'glyphicon-chevron-up':$ctrl.reverse,'glyphicon-chevron-down':!$ctrl.reverse}"></span>
+          </th>
+          <th ng-click="$ctrl.sort('precio_entrada')">Precio Entrada
+            <span class="glyphicon sort-icon" ng-show="$ctrl.sortKey=='precio_entrada'" ng-class="{'glyphicon-chevron-up':$ctrl.reverse,'glyphicon-chevron-down':!$ctrl.reverse}"></span>
+          </th>
+          <th ng-click="$ctrl.sort('precio_salida')">Precio Salida
+            <span class="glyphicon sort-icon" ng-show="$ctrl.sortKey=='precio_salida'" ng-class="{'glyphicon-chevron-up':$ctrl.reverse,'glyphicon-chevron-down':!$ctrl.reverse}"></span>
+          </th>
+          <th class="text-center">ACCIONES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr dir-paginate="x in $ctrl.productos|orderBy:$ctrl.sortKey:$ctrl.reverse|filter:$ctrl.search|itemsPerPage:10">
+            <td>{{ x.upc }}</td>
+            <td>{{ x.proveedor.nombre }}</td>
+            <td>{{ x.nombre }}</td>
+            <td>{{ x.unidad.nombre }}</td>
+            <td>{{ x.precio_entrada | currency }}</td>
+            <td>{{ x.precio_salida | currency }}</td>
+            <td class="text-center">
+              <a ui-sref="main.home.productoEditar({ id: x.id})" style="font-size:22px; color:#f0ad4e;" ng-click="detalleProducto(x)" ng-if="$ctrl.productos"><i class="fa fa-edit"></i></a>
+              <a href="" ng-click="$ctrl.deleteProduct(x)" style="font-size:22px; color:#d9534f; padding-left:10px;" ng-if="$ctrl.productos"><i class="fa fa-trash"></i></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
+      </dir-pagination-controls>
+    </div>
+  </div>
+</div>

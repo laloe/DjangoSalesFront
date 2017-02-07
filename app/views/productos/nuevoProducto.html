@@ -1,0 +1,77 @@
+<h4 style="margin-top:-20px;"><a ui-sref="main.home.productos"><i class="fa fa-chevron-left" aria-hidden="true"></i>Atras</a></h4>
+<div class="col-md-8 col-md-offset-2">
+  <div class="card">
+    <div class="header">
+      <h4 class="title">Nuevo Producto</h4>
+    </div>
+    <div class="content">
+      <form ng-submit="$ctrl.guardaProducto()">
+        <div class="row">
+          <div class="col-md-5">
+            <div class="form-group">
+              <label>UPC</label>
+              <input type="number" class="form-control border-input"
+               placeholder="UPC"
+               required=""
+               ng-model="$ctrl.upc"
+               ng-change="$ctrl.checarUpc()">
+               <span class="text-help text-danger" ng-show="$ctrl.showUpc">Este UPC ya está en uso.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-8" style="margin-top:-20px;">
+            <div class="form-group">
+              <label>Nombre Del Producto</label>
+              <input type="text" ng-model="$ctrl.nombre" class="form-control border-input" placeholder="Nombre Producto" required="">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-7"  style="margin-top:-20px;">
+            <div class="form-group">
+              <label>Proveedor</label>
+              <select class="form-control"
+              ng-model="$ctrl.selectedProveedor"
+			  ng-options="v.nombre for v in $ctrl.proveedores track by v.id">
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6"  style="margin-top:-20px;">
+            <div class="form-group">
+              <label>Unidad</label>
+              <select class="form-control"
+              ng-model="$ctrl.selectedUnidad"
+			  ng-options="v.nombre for v in $ctrl.unidades track by v.id">
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4"  style="margin-top:-20px;">
+            <div class="form-group">
+              <label>Precio De Entrada</label>
+              <input type="number" step='any' ng-model="$ctrl.entrada" min="0" placeholder="0.0" class="form-control border-input" required="">
+            </div>
+          </div>
+          <div class="col-md-4 col-md-offset-1"  style="margin-top:-20px;">
+            <div class="form-group">
+              <label>Precio De Venta</label>
+              <input type="number" step='any' ng-model="$ctrl.salida" min="0" placeholder="0.0" class="form-control border-input" required="">
+            </div>
+          </div>
+        </div>
+        <div class="text-right">
+          <button type="submit" class="btn btn-success btn-fill btn-wd btn-lg"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+        </div>
+        <div class="clearfix"></div>
+      </form>
+    </div>
+  </div>
+</div>

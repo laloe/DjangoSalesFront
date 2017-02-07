@@ -1,0 +1,77 @@
+<div class="wrapper">
+  <div class="sidebar" data-background-color="white" data-active-color="warning">
+    <!--
+    Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
+    Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+  -->
+    <div class="sidebar-wrapper">
+      <div class="logo">
+        <a ui-sref="main.home" class="simple-text">djangosales</a>
+      </div>
+      <ul class="nav">
+        <li ui-sref="main.home.productos" ui-sref-active="active">
+          <a ui-sref="main.home.productos" ui-sref-active="active">
+            <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+            <p>Productos</p>
+          </a>
+        </li>
+        <li ui-sref="main.home.inventario" ui-sref-active="active">
+          <a ui-sref="main.home.inventario" ui-sref-active="active">
+            <i class="fa fa-archive" aria-hidden="true"></i>
+            <p>Inventario</p>
+          </a>
+        </li>
+        <li>
+          <a href="typography.html">
+            <i class="ti-text"></i>
+            <p>Ventas</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="main-panel">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar bar1"></span>
+                        <span class="icon-bar bar2"></span>
+                        <span class="icon-bar bar3"></span>
+                    </button>
+          <a class="navbar-brand">{{ $ctrl.title }}</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="ti-user"></i>
+                <p>{{ $ctrl.username}}</p>
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="" ng-click="$ctrl.salir()">Salir</a></li>
+              </ul>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+    <div class="content">
+      <div class="container-fluid">
+        <ui-view></ui-view>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container-fluid">
+        <div class="copyright pull-right">
+          made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+</div>
